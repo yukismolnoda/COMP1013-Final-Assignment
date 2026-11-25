@@ -22,3 +22,8 @@
 #•	Visualise the distribution of item prices in order_items.csv with a histogram, and report the mean and median price.
 #•	Join order_items.csv and products.csv, and draw a scatter plot of freight value against product weight (product_weight_g). Describe the relationship.
 #•	Explain your findings.
+
+# Task 2:
+#•	Count the number of orders in each order status and the percentage of all orders, and visualise this with a bar chart. What percentage of orders were not delivered, that is, orders whose status is anything other than delivered?
+#•	Join orders.csv and customers.csv, calculate the percentage of orders not delivered in each customer state, and show it in a bar chart.
+#•	Explain your findings.
