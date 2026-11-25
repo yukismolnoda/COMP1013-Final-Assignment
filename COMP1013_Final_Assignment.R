@@ -32,3 +32,34 @@
 #•	Analyse the usage frequency of each payment type (number and percentage of payments), and visualise it with a bar chart.
 #•	Compare the payment values of the different payment types with a boxplot. Which payment types are used for larger or smaller amounts?
 #•	Explain your findings.
+
+# First task,
+# #•	Visualise the distribution of item prices in order_items.csv with a histogram, and report the mean and median price.
+
+library(ggplot2)
+library(tidyverse)
+order_items = read.csv("order_items.csv")
+
+# Histogram
+ggplot(order_items) +
+  geom_histogram(mapping = aes(x = price)) +
+  labs(title = "Distribution of Item Prices", x = "Price", y = "Count")
+
+# Mean and Median Price
+
+mean_price = mean(order_items$price, na.rm = TRUE)
+median_price = median(order_items$price, na.rm = TRUE)
+
+#•	Join order_items.csv and products.csv, and draw a scatter plot of freight value against product weight (product_weight_g). Describe the relationship.
+
+products = read.csv("products.csv")
+
+# Join
+
+items_product = left_join(order_items, products, by = "product_id")
+
+# Scatter plot
+
+ggplot(items_product) +
+  geom_point(mapping = aes(x = product_weight_g, y = freight_value)) +
+  labs(title = "Freight value vs product weight", x = "Product Weight (g)", y = "Freight Value")
