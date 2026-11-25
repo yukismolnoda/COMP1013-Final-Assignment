@@ -27,3 +27,8 @@
 #•	Count the number of orders in each order status and the percentage of all orders, and visualise this with a bar chart. What percentage of orders were not delivered, that is, orders whose status is anything other than delivered?
 #•	Join orders.csv and customers.csv, calculate the percentage of orders not delivered in each customer state, and show it in a bar chart.
 #•	Explain your findings.
+
+# Task 3:
+#•	Analyse the usage frequency of each payment type (number and percentage of payments), and visualise it with a bar chart.
+#•	Compare the payment values of the different payment types with a boxplot. Which payment types are used for larger or smaller amounts?
+#•	Explain your findings.
