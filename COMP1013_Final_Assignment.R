@@ -63,3 +63,61 @@ items_product = left_join(order_items, products, by = "product_id")
 ggplot(items_product) +
   geom_point(mapping = aes(x = product_weight_g, y = freight_value)) +
   labs(title = "Freight value vs product weight", x = "Product Weight (g)", y = "Freight Value")
+
+# Second task,
+#•	Count the number of orders in each order status and the percentage of all orders, and visualise this with a bar chart. What percentage of orders were not delivered, that is, orders whose status is anything other than delivered?
+
+library(ggplot2)
+library(tidyverse)
+orders = read.csv("orders.csv")
+
+# Count number of orders in each status and percentage
+
+status_summary = orders %>%
+  count(order_status) %>%
+  mutate(percentage = (n / sum(n)) * 100) # Turns counts to percentage
+
+status_summary
+
+# Bar plot
+
+ggplot(status_summary) +
+  geom_col(mapping = aes(x = order_status, y = percentage)) +
+  labs(title = "Percentage of orders by status", x = "Status", y = "Percentage")
+
+# Percentage of orders not delivered
+
+not_delivered = status_summary %>%
+  filter(order_status != "delivered") %>%
+  summarise(not_delivered = sum(percentage))
+
+not_delivered
+
+#•	Join orders.csv and customers.csv, calculate the percentage of orders not delivered in each customer state, and show it in a bar chart.
+
+customers = read.csv("customers.csv")
+orders_customers = left_join(orders, customers, by = "customer_id")
+
+# Count total orders per state
+
+total_state = orders_customers %>%
+  count(customer_state)
+
+# Count orders not delivered per state
+
+not_delivered = orders_customers %>%
+  filter(order_status != "delivered") %>%
+  count(customer_state)
+
+# Join the two summaries and calculate percentage
+state_summary = left_join(total_state, not_delivered, by = "customer_state")
+state_summary$percent_not_delivered = (state_summary$n.y / state_summary$n.x) * 100
+
+state_summary
+
+# Bar chart
+
+ggplot(state_summary) +
+  geom_col(mapping = aes(x = customer_state, y = percent_not_delivered)) +
+  labs(title = "Percentage of orders not delivered by state", x = "Customer State", y = "Percentage of not delivered")
+
