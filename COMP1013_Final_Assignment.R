@@ -10,13 +10,13 @@
 # how many orders are not delivered, and how customers pay. 
 # You have been given data on orders, customers, products, sellers, payments and geolocation from 2016 to 2018.
 # The dataset is provided as seven CSV files:
-# customers.csv	Customer identifiers, unique IDs and location (zip code prefix, city, state)
-# geolocation.csv	Zip code prefixes mapped to latitude/longitude, city and state
-# order_items.csv	Items within each order: product ID, seller ID, price, freight value
-# orders.csv	Order identifiers, customer IDs, order status and timestamps (purchase, approval, delivery, estimated delivery)
-# payments.csv	Order payments: payment sequence, payment type, instalments, value	
-# products.csv	Product identifiers, category name and physical attributes (name/description length, photos, weight, dimensions)
-# sellers.csv	Seller identifiers and location (zip code prefix, city, state
+# customers.csv	Customer identifiers, unique IDs and location (zip code prefix, city, state) (Task 2)
+# geolocation.csv	Zip code prefixes mapped to latitude/longitude, city and state (Bonus only)
+# order_items.csv	Items within each order: product ID, seller ID, price, freight value (Task 1)
+# orders.csv	Order identifiers, customer IDs, order status and timestamps (purchase, approval, delivery, estimated delivery) (Task 2)
+# payments.csv	Order payments: payment sequence, payment type, instalments, value (Task 3)
+# products.csv	Product identifiers, category name and physical attributes (name/description length, photos, weight, dimensions) (Task 1)
+# sellers.csv	Seller identifiers and location (zip code prefix, city, state (Bonus only)
 
 # Task 1:
 #•	Visualise the distribution of item prices in order_items.csv with a histogram, and report the mean and median price.
@@ -148,6 +148,7 @@ ggplot(payment_summary) +
 
 ggplot(payments) +
   geom_boxplot(mapping = aes(x = payment_type, y = payment_value)) +
+  labs(title = "Payment Values vs Payment Types", x = "Payment Type", y = "Payment Values")
 
 # Larger, credit
 # Smaller, voucher
