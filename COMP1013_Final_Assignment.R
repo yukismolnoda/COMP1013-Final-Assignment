@@ -121,3 +121,33 @@ ggplot(state_summary) +
   geom_col(mapping = aes(x = customer_state, y = percent_not_delivered)) +
   labs(title = "Percentage of orders not delivered by state", x = "Customer State", y = "Percentage of not delivered")
 
+# Third task,
+
+#•	Analyse the usage frequency of each payment type (number and percentage of payments), and visualise it with a bar chart.
+
+library(ggplot2)
+library(tidyverse)
+payments = read.csv("payments.csv")
+
+# Count the payments and calculate percentage
+
+payment_summary = payments %>%
+  count(payment_type)
+
+payment_summary$percentage = (payment_summary$n / sum(payment_summary$n)) * 100
+
+payment_summary
+
+# Bar chart
+
+ggplot(payment_summary) +
+  geom_col(mapping = aes(x = payment_type, y = percentage)) +
+  labs(title = "Frequency of each payment types", x = "Payment Type", y = "Percentage of Payments")
+
+#•	Compare the payment values of the different payment types with a boxplot. Which payment types are used for larger or smaller amounts?
+
+ggplot(payments) +
+  geom_boxplot(mapping = aes(x = payment_type, y = payment_value)) +
+
+# Larger, credit
+# Smaller, voucher
