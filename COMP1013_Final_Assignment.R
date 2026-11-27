@@ -64,6 +64,15 @@ ggplot(items_product) +
   geom_point(mapping = aes(x = product_weight_g, y = freight_value)) +
   labs(title = "Freight value vs product weight", x = "Product Weight (g)", y = "Freight Value")
 
+# For relationship, it seems that everything is almost equal to each other, although some product weights has a higher value.
+
+# Findings, 
+
+# From the first histogram, the distribution has shown that the lesser the price, the more count the product has. 
+# Also, mean price is at 120.65, median price at 74.99. It shows that the median is a better measure of the item prices.
+# For the second, same findings, for relationship, it seems that everything is almost equal to each other, although some product weights has a higher value.
+
+
 # Second task,
 #•	Count the number of orders in each order status and the percentage of all orders, and visualise this with a bar chart. What percentage of orders were not delivered, that is, orders whose status is anything other than delivered?
 
@@ -121,6 +130,10 @@ ggplot(state_summary) +
   geom_col(mapping = aes(x = customer_state, y = percent_not_delivered)) +
   labs(title = "Percentage of orders not delivered by state", x = "Customer State", y = "Percentage of not delivered")
 
+# Findings,
+
+# Out of all orders, 2.8% were not delivered, and by state, state RR is the highest at 10.9%
+
 # Third task,
 
 #•	Analyse the usage frequency of each payment type (number and percentage of payments), and visualise it with a bar chart.
@@ -152,3 +165,7 @@ ggplot(payments) +
 
 # Larger, credit
 # Smaller, voucher
+
+# Findings,
+
+# Credit card is the most common type of payments, with debit card the least.
